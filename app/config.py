@@ -1,4 +1,5 @@
 from pydantic import BaseSettings
+import os
 
 class Settings(BaseSettings):
     database_hostname: str
@@ -11,10 +12,13 @@ class Settings(BaseSettings):
     access_token_expire_minutes: int
 
     class Config:
-        env_file = '.env'
+        if os.environ.get("USE_DOTENV", "false").lower() == "true":
+            env_file = '.env'
+        else:
+            env_file = None
 
 
-settings = Settings()
+settings = Settings(database_hostname=os.environ['DATABASE_HOST'])
 
 # from pydantic import BaseSettings, PostgresDsn
 # from typing import Optional
