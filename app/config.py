@@ -12,10 +12,11 @@ class Settings(BaseSettings):
     access_token_expire_minutes: int
 
     class Config:
-        if os.environ.get("USE_DOTENV", "false").lower() == "true":
-            env_file = '.env'
-        else:
-            env_file = None
+        env_file = ".env"
+        # if os.environ.get("USE_DOTENV", "false").lower() == "true":
+        #     env_file = '.env'
+        # else:
+        #     env_file = None
 
 
 settings = Settings()
