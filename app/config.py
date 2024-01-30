@@ -18,7 +18,7 @@ class Settings(BaseSettings):
             env_file = None
 
 
-settings = Settings(database_hostname=os.environ['DATABASE_HOST'])
+settings = Settings()
 
 # from pydantic import BaseSettings, PostgresDsn
 # from typing import Optional
